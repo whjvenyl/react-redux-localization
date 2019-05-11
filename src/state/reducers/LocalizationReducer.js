@@ -1,56 +1,70 @@
-import { en_EN, SET_LANGUAGE, SET_MESSAGES } from './../../constants/languages';
+import { en, SET_LANGUAGE, SET_MESSAGES } from './../../constants/languages';
+import getBrowserLanguage from './../../helpers/getBrowserLanguage';
 
-export const getBaseLanguageKey = () => {
-    if(window && window.navigator && window.navigator.language) {
-        return window.navigator.language;
-    } else if(window && window.navigator && window.navigator.userLanguage) {
-        return window.navigator.userLanguage;
+const initialBaseLanguage = () => {
+    if(window && window.reactReduxLocalization && window.reactReduxLocalization.baseLanguage) {
+        return window.reactReduxLocalization.baseLanguage;
     }
-    return en_EN;
+    return en;
 }
 
-const initialMessages = {
-    "en-EN": {
-        a: {
-            b: {
-                c: 'Hello, I\' am the c',
-                d: 'Hello, I\' am the d',
-                k: 'Hello, I\' am the d with vars {0}',
-                j: 'Test with named variables {name} {surname}',
-                variable: 'piggod'
+const initialCurrentLanguage = () => {
+    const browserLanguage = getBrowserLanguage();
+    if(window && window.reactReduxLocalization && window.reactReduxLocalization.currentLanguage) {
+        return window.reactReduxLocalization.baseLanguage;
+    } else if(browserLanguage) {
+        return browserLanguage;
+    }
+    return en;
+}
+
+const initialMessages = () => {
+    if(window && window.reactReduxLocalization && window.reactReduxLocalization.messages) {
+        return window.reactReduxLocalization.messages;
+    }
+    return {
+        en: {
+            a: {
+                b: {
+                    c: 'Hello, I\' am the c',
+                    d: 'Hello, I\' am the d',
+                    k: 'Hello, I\' am the d with vars {0}',
+                    j: 'Test with named variables {name} {surname}',
+                    variable: 'IAmAVariable'
+                }
+            },
+            counterable: {
+                name: {
+                    singular: "{counter} thing",
+                    plural: "{counter} things",
+                    empty: "{counter} things"
+                }
             }
         },
-        counterable: {
-            name: {
-                singular: "{counter} thing",
-                plural: "{counter} things",
-                empty: "{counter} things"
-            }
-        }
-    },
-    "it-IT": {
-        a: {
-            b: {
-                c: 'Ciao sono la c',
-                k: 'Ciao sono la k con variabili {0}',
-                j: 'Test con variabili esplicite {name} {surname}',
-                variable: 'porco dio'
-            }
-        },
-        counterable: {
-            name: {
-                singular: "{counter} cosa",
-                plural: "{counter} cose",
-                empty: "{counter} cose"
+        it: {
+            a: {
+                b: {
+                    c: 'Ciao sono la c',
+                    k: 'Ciao sono la k con variabili {0}',
+                    j: 'Test con variabili esplicite {name} {surname}',
+                    variable: 'porco dio'
+                }
+            },
+            counterable: {
+                name: {
+                    singular: "{counter} cosa",
+                    plural: "{counter} cose",
+                    empty: "{counter} cose"
+                }
             }
         }
     }
 }
 
 const initialState = {
-    baseLanguage: en_EN,
-    currentLanguage: getBaseLanguageKey(),
-    messages: initialMessages
+    baseLanguage: initialBaseLanguage(),
+    currentLanguage: initialCurrentLanguage(),
+    messages: initialMessages()
 }
 
 const LocalizationReducer = (state = initialState, action) => {
