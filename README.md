@@ -99,3 +99,23 @@ The component can receive and handle the props below
 		strings="customer.info.nameInfo"
 		vars={{name: 'Marco'}}
 	/>
+Off course in vars you can pass another Translator component.
+**prefix** - It can be a string, an array or another component (also a Translator component) and it will be placed right before the translation.
+**suffix** - It can be a string, an array or another component (also a Translator component) and it will be placed right after the translation.
+
+The Translator component can also manage counterable translations. In order to do this the translation string has to contain {counter} and you have to pass 4 props to the component:
+
+**counter**: a number that will be the element that can make the component choosing for a plural or singular form.
+**singular**: it will be used if the counter prop is equal to 1.
+**empty**: it will be used if the counter prop is equal to 0.
+**plural**: it will be used if the counter props is more than 1
+singular, empty and plural will accept an object that has to contain property string and can manage all the props we can pass to Translator component.
+
+## Why??!??!??
+Someone of you is asking to himself "why do I have to use this library for managing my app translations?".
+
+ - [x] It's powerful
+ - [x] It's lightweight (6kb)
+ - [x] It's simple
+
+I will accept any contribute in terms of coding or any suggestion about how to improve this module.

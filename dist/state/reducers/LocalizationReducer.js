@@ -5,64 +5,82 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.getBaseLanguageKey = void 0;
+exports.default = void 0;
 
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
 var _languages = require("./../../constants/languages");
 
-var getBaseLanguageKey = function getBaseLanguageKey() {
-  if (window && window.navigator && window.navigator.language) {
-    return window.navigator.language;
-  } else if (window && window.navigator && window.navigator.userLanguage) {
-    return window.navigator.userLanguage;
+var _getBrowserLanguage = _interopRequireDefault(require("./../../helpers/getBrowserLanguage"));
+
+var initialBaseLanguage = function initialBaseLanguage() {
+  if (window && window.reactReduxLocalization && window.reactReduxLocalization.baseLanguage) {
+    return window.reactReduxLocalization.baseLanguage;
   }
 
-  return _languages.en_EN;
+  return _languages.en;
 };
 
-exports.getBaseLanguageKey = getBaseLanguageKey;
-var initialMessages = {
-  "en-EN": {
-    a: {
-      b: {
-        c: 'Hello, I\' am the c',
-        d: 'Hello, I\' am the d',
-        k: 'Hello, I\' am the d with vars {0}',
-        j: 'Test with named variables {name} {surname}',
-        variable: 'piggod'
-      }
-    },
-    counterable: {
-      name: {
-        singular: "{counter} thing",
-        plural: "{counter} things",
-        empty: "{counter} things"
-      }
-    }
-  },
-  "it-IT": {
-    a: {
-      b: {
-        c: 'Ciao sono la c',
-        k: 'Ciao sono la k con variabili {0}',
-        j: 'Test con variabili esplicite {name} {surname}',
-        variable: 'porco dio'
-      }
-    },
-    counterable: {
-      name: {
-        singular: "{counter} cosa",
-        plural: "{counter} cose",
-        empty: "{counter} cose"
-      }
-    }
+var initialCurrentLanguage = function initialCurrentLanguage() {
+  var browserLanguage = (0, _getBrowserLanguage.default)();
+
+  if (window && window.reactReduxLocalization && window.reactReduxLocalization.currentLanguage) {
+    return window.reactReduxLocalization.baseLanguage;
+  } else if (browserLanguage) {
+    return browserLanguage;
   }
+
+  return _languages.en;
 };
+
+var initialMessages = function initialMessages() {
+  if (window && window.reactReduxLocalization && window.reactReduxLocalization.messages) {
+    return window.reactReduxLocalization.messages;
+  }
+
+  return {
+    en: {
+      a: {
+        b: {
+          c: 'Hello, I\' am the c',
+          d: 'Hello, I\' am the d',
+          k: 'Hello, I\' am the d with vars {0}',
+          j: 'Test with named variables {name} {surname}',
+          variable: 'IAmAVariable'
+        }
+      },
+      counterable: {
+        name: {
+          singular: "{counter} thing",
+          plural: "{counter} things",
+          empty: "{counter} things"
+        }
+      }
+    },
+    it: {
+      a: {
+        b: {
+          c: 'Ciao sono la c',
+          k: 'Ciao sono la k con variabili {0}',
+          j: 'Test con variabili esplicite {name} {surname}',
+          variable: 'porco dio'
+        }
+      },
+      counterable: {
+        name: {
+          singular: "{counter} cosa",
+          plural: "{counter} cose",
+          empty: "{counter} cose"
+        }
+      }
+    }
+  };
+};
+
 var initialState = {
-  baseLanguage: _languages.en_EN,
-  currentLanguage: getBaseLanguageKey(),
-  messages: initialMessages
+  baseLanguage: initialBaseLanguage(),
+  currentLanguage: initialCurrentLanguage(),
+  messages: initialMessages()
 };
 
 var LocalizationReducer = function LocalizationReducer() {
