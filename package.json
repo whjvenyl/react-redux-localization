@@ -3,9 +3,13 @@
   "version": "0.0.1",
   "description": "React localization system through redux",
   "main": "dist/index.js",
+  "unpkg": "src/index.js",
   "publishConfig": {
     "access": "public"
   },
+  "repository": "github:Ipno84/react-redux-localization",
+  "bugs": "https://github.com/Ipno84/react-redux-localization/issues",
+  "npmName": "react-redux-localization",
   "scripts": {
     "transpile": "babel src -d ./dist --copy-files",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,10 +18,19 @@
   },
   "keywords": [
     "react",
+    "reactjs",
     "redux",
-    "localization"
+    "localization",
+    "translation",
+    "translate",
+    "i18n",
+    "internationalization",
+    "globalization",
+    "l10n"
   ],
-  "author": "Marco Abate <marcoabate1984@gmail.com>",
+  "authors": [
+    "Marco Abate <marcoabate1984@gmail.com>"
+  ],
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
