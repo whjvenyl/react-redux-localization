@@ -1,0 +1,20 @@
+# standard ignores
+node_modules/
+karma.conf.js
+spec/
+.babelrc
+babel.config.js
+.jshintrc
+.npmignore
+.gitignore
+LICENSE
+package.json
+*.log
+*-lock.*
+*.lock
+*.tgz
+README.md
+LICENSE
+
+# ignore src
+src/
