@@ -2,7 +2,7 @@ React library for manage app localization through redux
 
 # Installation
 
-    npm install --save @ipno84/react-redux-localization
+    npm install --save @ipno/react-redux-localization
 
 # Documentation
 This documentation is published on [https://ipno84.github.io/react-redux-localization/](https://ipno84.github.io/react-redux-localization/)
@@ -12,7 +12,7 @@ In order to use this module you need, at least, to inject the provided reducer i
 
 	import { createStore, combineReducers } from "redux";  
     import yourAppReducer from "./../reducers/yourAppReducer";
-    import  { REDUCER_NAME, LocalizationReducer }  from @ipno84/react-redux-localization';
+    import { REDUCER_NAME, LocalizationReducer } from '@ipno/react-redux-localization';
     
     const configureStore = (initialState) => {
       const store = createStore(
@@ -28,7 +28,7 @@ In order to use this module you need, at least, to inject the provided reducer i
 Now you have the localization reducer in your store, but you are not able to translate anything because you don't have any message yet.
 react-redux-localization expose also a set of actions that allow you to *set the current used language* and to *store your translation strings*
 
-    import { setMessages, setLanguages } from '@ipno84/react-redux-localization';
+    import { setMessages, setLanguages } from '@ipno/react-redux-localization';
 
 # API
 ## setMessages - reduxAction
@@ -58,7 +58,7 @@ This action accept a string as payload and it will identify your application cur
 react-redux-localization expose a component too that will take care of your translations using the props in store and the one you pass to it.
 You can import it your components
 
-    import { Translator } from '@ipno84/react-redux-localization';
+    import { Translator } from '@ipno/react-redux-localization';
 
 The component can receive and handle the props below
 
