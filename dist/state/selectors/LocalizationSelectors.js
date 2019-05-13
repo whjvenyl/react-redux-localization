@@ -106,14 +106,22 @@ var getTranslation = function getTranslation(state, props) {
     return null;
   }
 
+  var translation;
+
   if (props.counter === undefined) {
-    return getSingularTranslation(state, props);
+    translation = getSingularTranslation(state, props);
   } else if (props.counter === 0 && props.empty) {
-    return getSingularTranslation(state, getTranslationProps(props, 'empty'));
+    translation = getSingularTranslation(state, getTranslationProps(props, 'empty'));
   } else if (props.counter === 1 && props.singular) {
-    return getSingularTranslation(state, getTranslationProps(props, 'singular'));
+    translation = getSingularTranslation(state, getTranslationProps(props, 'singular'));
   } else if (props.counter > 1 && props.plural) {
-    return getSingularTranslation(state, getTranslationProps(props, 'plural'));
+    translation = getSingularTranslation(state, getTranslationProps(props, 'plural'));
+  }
+
+  if (translation) {
+    return translation;
+  } else if (!translation && props.fallbackString) {
+    return fallbackString;
   }
 
   return null;
