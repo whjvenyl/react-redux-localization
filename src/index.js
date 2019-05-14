@@ -1,6 +1,6 @@
-import { REDUCER_NAME } from './constants/languages';
-import LocalizationReducer from './state/reducers/LocalizationReducer';
-import { setMessage, setLanguage } from './state/actions/LocalizationActions';
+import { REDUCER_NAME } from './constants';
+import LocalizationReducer from './state/reducers';
+import { setMessage, setLanguage } from './state/actions';
 import Translator from './components/Translator';
 
 export {

@@ -2,7 +2,7 @@
   "name": "@ipno/react-redux-localization",
   "version": "1.0.1",
   "description": "React localization system through redux",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "unpkg": "src/index.js",
   "publishConfig": {
     "access": "public"
@@ -11,10 +11,10 @@
   "bugs": "https://github.com/Ipno84/react-redux-localization/issues",
   "npmName": "react-redux-localization",
   "scripts": {
-    "transpile": "babel src -d ./dist --copy-files",
+    "transpile": "babel src -d ./lib --copy-files",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rimraf dist",
-    "prepack": "npm run transpile"
+    "clean": "rimraf lib",
+    "prepack": "npm run clean && npm run transpile"
   },
   "keywords": [
     "react",
