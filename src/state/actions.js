@@ -1,4 +1,4 @@
-import { SET_LANGUAGE, SET_MESSAGES } from './../../constants';
+import { SET_LANGUAGE, SET_MESSAGES } from './../constants';
 
 export const setLanguage = currentLanguage => ({
     type: SET_LANGUAGE,

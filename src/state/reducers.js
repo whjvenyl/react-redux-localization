@@ -1,5 +1,5 @@
-import { en, SET_LANGUAGE, SET_MESSAGES } from './../../constants';
-import getBrowserLanguage from './../../helpers/getBrowserLanguage';
+import { en, SET_LANGUAGE, SET_MESSAGES } from './../constants';
+import getBrowserLanguage from './../helpers/getBrowserLanguage';
 
 const initialBaseLanguage = () => window.reactReduxLocalization && window.reactReduxLocalization.baseLanguage ? window.reactReduxLocalization.baseLanguage : en;
 const initialCurrentLanguage = () => {
