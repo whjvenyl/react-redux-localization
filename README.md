@@ -1,4 +1,4 @@
-React library for manage app localization through redux
+React library that allows to manage app localization through redux
 # Installation
 
     npm install --save @ipno/react-redux-localization
