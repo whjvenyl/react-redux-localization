@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import get from './../../helpers/get';
-import { REDUCER_NAME } from './../../constants';
+import get from './../helpers/get';
+import { REDUCER_NAME } from './../constants';
 
 export const getBaseLanguage = state => state[REDUCER_NAME] ? state[REDUCER_NAME].baseLanguage : null;
 export const getCurrentLanguage = state => state[REDUCER_NAME] ? state[REDUCER_NAME].currentLanguage : null;

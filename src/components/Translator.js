@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { getTranslation } from '../../state/selectors';
+import { getTranslation } from '../state/selectors';
 
 const stateToProps = (state, ownProps) => ({
     translation: getTranslation(state, ownProps)
